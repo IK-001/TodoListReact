@@ -5,7 +5,8 @@ import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-
+  const [selectedTodoId,setSelectedTodoId] = useState(null)
+ 
   const addTodo = (task) => {
     const newTodo = { id: Date.now(), task, completed: false };
     setTodos([...todos, newTodo]);
@@ -21,11 +22,20 @@ const App = () => {
     ));
   };
 
+ 
+  
+
   return (
     <div className="App">
       <h1>Todo List</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} toggleCompletion={toggleCompletion} />
+      <TodoList todos={todos}
+                setTodos={setTodos}
+                deleteTodo={deleteTodo} 
+                toggleCompletion={toggleCompletion} 
+                selectedTodoId={selectedTodoId}
+                setSelectedTodoId={setSelectedTodoId}
+                />
     </div>
   );
 };
